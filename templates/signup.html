@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>Signup Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" type="image/png" href="static/images/favicon5.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <style>
     ::placeholder {
@@ -25,10 +22,12 @@
         <h1 style="padding-top: 200px;">Signup!</h1>
         <p style="font-size: 25px; color:#979A9A;">Please signup in order to login.</p>
         <form method="post" style="padding-top: 20px;">
-            <input class="container-fluid" type="text" name="usr" placeholder="Enter username"
-                   style="margin-bottom: 20px; width: 800px; height: 50px;">
-            <p><input class="container-fluid" type="password" name="psw" placeholder="Enter password"
-                      style="margin-bottom: 20px; width: 800px; height: 50px;"></p>
+            <i class="glyphicon glyphicon-user"
+               style="padding: 15px 0px 17px 15px; background-color: white; color:#007bff; border: none; text-align: center;"></i><input class="container-fluid" type="text" name="usr" placeholder="Enter username"
+                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;">
+            <p><i class="glyphicon glyphicon-lock"
+               style="padding: 15px 0px 17px 15px; background-color: white; color:#007bff; border: none; text-align: center;"></i><input class="container-fluid" type="password" name="psw" placeholder="Enter password"
+                      style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"></p>
             <p><input type="submit" name="submit" style="color: #007bff;"></p>
         </form>
         {% with messages = get_flashed_messages() %}
