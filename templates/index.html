@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% block title %}Pygames With Eol - Amazing Games{% endblock %}
+{% block content %}
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.indicator {
+position: relative;
+width: 50px;
+height: 50px;
+transform: rotate(45deg);
+}
+
+.indicator span {
+ postion: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  border-right: 3px solid #5D6D7E;
+  border-bottom: 3px solid #5D6D7E;
+}
+
+
+#example1 {
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 3px 5px #212F3D;
+  background-color: #007bff;
+  width: auto;
+  height: auto;
+}
+#example11 {
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 3px 5px #212F3D;
+  background-color: #007bff;
+  width: auto;
+  height: auto;
+
+}
+#example2 {
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 3px 5px #212F3D;
+  background-color: #34495E;
+  width: 350px;
+
+}
+#section1 {
+  height: auto;
+  background-color: #17202A;
+  background-image: url('static/images/right.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#section2 {
+  height: auto;
+  background-color: #17202A;
+  background-image: url('static/images/right.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.row {
+  display: flex;
+}
+
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+
+
+</style>
+<body>
+
+<p style="font-family: 'stencil'; text-align: center; background-color: #02070C; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px; padding-top: 30px;">
+    PyGames with Eol <img src="static/images/123456.png" width="120" style="margin-top: -15px;"></p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>How i started building my first games?</h2>
+        <p style="font-size: 25px; color:#979A9A;">I have always been the kind of guy that was more into building stuff
+            or games than into using them. And as an
+            enthusiast i started to investigate and research different ways that i can achieve my goal and build my
+            first game. That's how i encountered with the programing language named python.
+            After weeks of learning i finally made it and built my first game.
+            I called it <strong>Space Invaders</strong>. I built this game first because as a beginner someone
+            recommended to build this
+            as it was an easy game to built and a lot of fun to play.
+        </p>
+        <p style="font-size: 25px; color:#979A9A;">
+            In order to create this games i have had to use third party modules. I personally used pygame and it is
+            recommended because it is the most powerful python module to build games.
+            This module it's easy to use and has loads of powerful features.
+            It has fast responsiveness which helps as the game is faster because of that too.
+        </p>
+        <p style="font-size: 25px; color:#979A9A;">
+            If you want to download python click this link below:
+        </p>
+        <p style="font-size: 29px; color:#979A9A; margin-bottom: 50px">
+            <a href="https://www.python.org/downloads/" target="_blank">Python Link</a>
+        </p>
+        <div class="row" style="padding-bottom: 50px;">
+            <div class="column" id="example1" style="margin-right: 50px; margin-left: 50px;">
+                <p style="font-size: 23px; color:white; font-family:'Courier New'; padding: 0px 10px 0px;"><i>
+                    The day I discovered <strong>@python</strong> was a good day, amazing values and incredible power to
+                    solve and create
+                    almost anything you can imagine.</i><br>
+                    <i>
+                        As a guy who's first projects were with c++, i can proudly say that python is much simpler,
+                        especially for beginners to start with. </i><br>
+
+                    <img src="static/images/img_avatar.png" alt="pic" style="border-radius: 50px;" width="100px">
+                    <strong>Eol Nuha: Game and Web developer</strong>
+                </p>
+            </div>
+            <div class="column" id="example11" style="margin-right: 50px;">
+                <p style="font-size: 23px; color:white; font-family:'Courier New'; padding: 0px 10px 0px;"><i>
+                    I can still remember as it were yesterday, the day when Eol created his first game. All day he just
+                    stared
+                    at he's <strong>"Space Invaders"</strong> game and couldn't stop smiling.</i><br>
+                    <i>I think that from that moment on ,despite being very proud with himself and what he accomplished,
+                        he also decided what he wanted to be in the future.</i><br>
+                    <img src="static/images/img_avatar2.png" alt="pic" style="border-radius: 50px;" width="100px">
+                    <strong>Haxhere Nuha: Eoli's mother</strong>
+                </p>
+            </div>
+
+
+        </div>
+
+        <a href="#section2" style="color: #007bff;">
+            <div class="indicator" style="margin-left: 48.5%; opacity: 1.0;">
+                <span></span>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="main" id="section2" style="padding-top: 80px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>My Games and what it took to create them!</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            During my 3 month course with pygame i have managed to create seven games. With each of them you can
+            basically see my progress that i've made with python and pygame.
+            From first to the last, each of them took a lot effort and hard work, and i've learned a lot from each and
+            every one that i've made.
+        </p>
+        <p style="font-size: 25px; color:#979A9A;">
+            Some of these games are recreations from the games that i used to play as a little boy and that i grew up
+            playing them, others are original ideas except one named Super Mario Bros, this one i've made with a
+            youtuber during a stream he hosted.<br>
+            Every game is an offline game, meaning that internet is not needed to play the game.
+        </p>
+        <p style="font-size: 27px; color: white;">
+            If you think that i can change something to the games, don't
+            hesitate to contact me:
+        </p>
+        <div id="example2">
+            <ul>
+                <li>Phone: +383 49 793 208</li>
+                <li>Gmail: eol.nuha22@gmail.com</li>
+                <li>Email: olinuha08@hotmail.com</li>
+                <li>Facebook: Eol Nuha</li>
+                <li>Instagram: eol.nuha</li>
+            </ul>
+
+        </div>
+        <p style="font-size: 27px; color: white; margin: 20px 0px 50px;">
+            The links below will take you to the game's page and there you'll find all the information about the game.
+            Enjoy!
+        </p>
+
+
+        <div class="container" style="padding: 0px 0px 150px">
+            <div class="btn-group">
+                <div class="btn-group">
+                    <a href="/spaceinvaders">
+                        <button type="button" class="btn btn-primary btn-lg">Space Invaders<img
+                                src="static/images/icon.ico" alt="Space Invaders" width="25" style="margin-left: 5px;">
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="margin-left: 10px;"><a href="/spaceinvaders#section1">About game</a></li>
+                        <li style="margin-left: 10px;"><a href="/spaceinvaders#section2">Download app</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/dinogame">
+                        <button type="button" class="btn btn-primary btn-lg">Dinosaur Game<img src="static/images/1.png"
+                                                                                               alt="Dinosaur Game"
+                                                                                               width="25"
+                                                                                               style="margin-left: 5px;">
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="margin-left: 10px;"><a href="/dinogame#section1">About game</a></li>
+                        <li style="margin-left: 10px;"><a href="/dinogame#section2">Download app</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/towerwar">
+                        <button type="button" class="btn btn-primary btn-lg">Tower War<img
+                                src="static/images/weapons.png" alt="Tower War Game" width="25"
+                                style="margin-left: 5px;"></button>
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="margin-left: 10px;"><a href="/towerwar#section1">About game</a></li>
+                        <li style="margin-left: 10px;"><a href="/towerwar#section2">Download app</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/supermario">
+                        <button type="button" class="btn btn-primary btn-lg">Super Mario Bros<img
+                                src="static/images/super-mario.png" alt="Super Mario Bros" width="25"
+                                style="margin-left: 5px;"></button>
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="margin-left: 10px;"><a href="/supermario#section1">About game</a></li>
+                        <li style="margin-left: 10px;"><a href="/supermario#section2">Download app</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/snakegame">
+                        <button type="button" class="btn btn-primary btn-lg">Snake Game<img
+                                src="static/images/snake.ico" alt="Snake Game" width="25"
+                                style="margin-left: 5px;"></button>
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="margin-left: 10px;"><a href="/snakegame#section1">About game</a></li>
+                        <li style="margin-left: 10px;"><a href="/snakegame#section2">Download app</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p class="container-fluid" style="font-size: 27px; color: white; margin: 20px 0px 50px;">
+        If you want the source code to the all the games click the link below:
+    </p>
+    <div class="container" style="padding: 0px 0px 200px; text-align: center;">
+        <div class="btn-group">
+            <div class="btn-group">
+                <a href="/sourcecode">
+                    <button type="button" class="btn btn-primary btn-lg">Source Code<img
+                            src="static/images/favicon5.png"
+                            alt="Logo" height="30" style="margin-left: 5px;">
+                    </button>
+                </a>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li style="margin-left: 10px;"><a href="/sourcecode#section1">Space Invaders</a></li>
+                    <li style="margin-left: 10px;"><a href="/sourcecode#section2">Dinosaur Game</a></li>
+                    <li style="margin-left: 10px;"><a href="/sourcecode#section3">Tower War</a></li>
+                    <li style="margin-left: 10px;"><a href="/sourcecode#section4">Super Mario Bros</a></li>
+                    <li style="margin-left: 10px;"><a href="/sourcecode#section5">Snake Game</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

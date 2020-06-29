@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>main_menu.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #66d9ef; font-style: italic;}
+.s1 { color: #f8f8f2;}
+.s2 { color: #f92672;}
+.s3 { color: #e6db74;}
+.s4 { color: #ae81ff;}
+.s5 { color: #75715e;}
+.ln { color: #f8f8f2; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#272822">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main_menu.py</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">from </span><span class="s1">game </span><span class="s0">import </span><span class="s1">Game</span>
+<a name="l2"><span class="ln">2    </span></a><span class="s0">from </span><span class="s1">game2 </span><span class="s0">import </span><span class="s1">Game2</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">from </span><span class="s1">game3 </span><span class="s0">import </span><span class="s1">Game3</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import </span><span class="s1">pygame</span>
+<a name="l5"><span class="ln">5    </span></a><span class="s0">import </span><span class="s1">os</span>
+<a name="l6"><span class="ln">6    </span></a>
+<a name="l7"><span class="ln">7    </span></a><span class="s1">start_btn </span><span class="s2">= </span><span class="s1">pygame.image.load(os.path.join(</span><span class="s3">&quot;game_assets&quot;</span><span class="s1">, </span><span class="s3">&quot;easy.png&quot;</span><span class="s1">))</span>
+<a name="l8"><span class="ln">8    </span></a><span class="s1">start_btn1 </span><span class="s2">= </span><span class="s1">pygame.image.load(os.path.join(</span><span class="s3">&quot;game_assets&quot;</span><span class="s1">, </span><span class="s3">&quot;normal.png&quot;</span><span class="s1">))</span>
+<a name="l9"><span class="ln">9    </span></a><span class="s1">start_btn2 </span><span class="s2">= </span><span class="s1">pygame.image.load(os.path.join(</span><span class="s3">&quot;game_assets&quot;</span><span class="s1">, </span><span class="s3">&quot;hard.png&quot;</span><span class="s1">))</span>
+<a name="l10"><span class="ln">10   </span></a><span class="s1">logo </span><span class="s2">= </span><span class="s1">pygame.image.load(os.path.join(</span><span class="s3">&quot;game_assets&quot;</span><span class="s1">, </span><span class="s3">&quot;title.png&quot;</span><span class="s1">))</span>
+<a name="l11"><span class="ln">11   </span></a>
+<a name="l12"><span class="ln">12   </span></a>
+<a name="l13"><span class="ln">13   </span></a><span class="s0">class </span><span class="s1">MainMenu</span><span class="s2">:</span>
+<a name="l14"><span class="ln">14   </span></a>    <span class="s0">def </span><span class="s1">__init__(self, win)</span><span class="s2">:</span>
+<a name="l15"><span class="ln">15   </span></a>        <span class="s1">self.width </span><span class="s2">= </span><span class="s4">1350</span>
+<a name="l16"><span class="ln">16   </span></a>        <span class="s1">self.height </span><span class="s2">= </span><span class="s4">700</span>
+<a name="l17"><span class="ln">17   </span></a>        <span class="s1">self.bg </span><span class="s2">= </span><span class="s1">pygame.image.load(os.path.join(</span><span class="s3">&quot;game_assets&quot;</span><span class="s1">, </span><span class="s3">&quot;bg.png&quot;</span><span class="s1">))</span>
+<a name="l18"><span class="ln">18   </span></a>        <span class="s1">self.bg </span><span class="s2">= </span><span class="s1">pygame.transform.scale(self.bg, (self.width, self.height))</span>
+<a name="l19"><span class="ln">19   </span></a>        <span class="s1">self.win </span><span class="s2">= </span><span class="s1">win</span>
+<a name="l20"><span class="ln">20   </span></a>        <span class="s1">self.btn </span><span class="s2">= </span><span class="s1">(self.width </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">- </span><span class="s1">start_btn1.get_width() </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">- </span><span class="s1">start_btn.get_width() </span><span class="s2">- </span><span class="s4">20</span><span class="s1">, </span><span class="s4">350</span><span class="s1">, start_btn.get_width(),</span>
+<a name="l21"><span class="ln">21   </span></a>                     <span class="s1">start_btn.get_height())</span>
+<a name="l22"><span class="ln">22   </span></a>        <span class="s1">self.btn1 </span><span class="s2">= </span><span class="s1">(self.width </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">- </span><span class="s1">start_btn1.get_width() </span><span class="s2">/ </span><span class="s4">2</span><span class="s1">, </span><span class="s4">350</span><span class="s1">, start_btn1.get_width(), start_btn1.get_height())</span>
+<a name="l23"><span class="ln">23   </span></a>        <span class="s1">self.btn2 </span><span class="s2">= </span><span class="s1">(self.width </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">- </span><span class="s1">start_btn2.get_width() </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">+ </span><span class="s1">start_btn1.get_width() </span><span class="s2">+ </span><span class="s4">20</span><span class="s1">, </span><span class="s4">350</span><span class="s1">, start_btn2.get_width(),</span>
+<a name="l24"><span class="ln">24   </span></a>                     <span class="s1">start_btn2.get_height())</span>
+<a name="l25"><span class="ln">25   </span></a>
+<a name="l26"><span class="ln">26   </span></a>    <span class="s0">def </span><span class="s1">run(self)</span><span class="s2">:</span>
+<a name="l27"><span class="ln">27   </span></a>        <span class="s1">run </span><span class="s2">= </span><span class="s0">True</span>
+<a name="l28"><span class="ln">28   </span></a>
+<a name="l29"><span class="ln">29   </span></a>        <span class="s0">while </span><span class="s1">run</span><span class="s2">:</span>
+<a name="l30"><span class="ln">30   </span></a>            <span class="s0">for </span><span class="s1">event </span><span class="s0">in </span><span class="s1">pygame.event.get()</span><span class="s2">:</span>
+<a name="l31"><span class="ln">31   </span></a>                <span class="s0">if </span><span class="s1">event.type </span><span class="s2">== </span><span class="s1">pygame.QUIT</span><span class="s2">:</span>
+<a name="l32"><span class="ln">32   </span></a>                    <span class="s1">run </span><span class="s2">= </span><span class="s0">False</span>
+<a name="l33"><span class="ln">33   </span></a>
+<a name="l34"><span class="ln">34   </span></a>                <span class="s0">if </span><span class="s1">event.type </span><span class="s2">== </span><span class="s1">pygame.MOUSEBUTTONUP</span><span class="s2">:</span>
+<a name="l35"><span class="ln">35   </span></a>                    <span class="s5"># check if hit start btn</span>
+<a name="l36"><span class="ln">36   </span></a>                    <span class="s1">x, y </span><span class="s2">= </span><span class="s1">pygame.mouse.get_pos()</span>
+<a name="l37"><span class="ln">37   </span></a>
+<a name="l38"><span class="ln">38   </span></a>                    <span class="s0">if </span><span class="s1">self.btn[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">x </span><span class="s2">&lt;= </span><span class="s1">self.btn[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn[</span><span class="s4">2</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l39"><span class="ln">39   </span></a>                        <span class="s0">if </span><span class="s1">self.btn[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">y </span><span class="s2">&lt;= </span><span class="s1">self.btn[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn[</span><span class="s4">3</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l40"><span class="ln">40   </span></a>                            <span class="s1">game </span><span class="s2">= </span><span class="s1">Game(self.win)</span>
+<a name="l41"><span class="ln">41   </span></a>                            <span class="s1">game.run()</span>
+<a name="l42"><span class="ln">42   </span></a>                            <span class="s0">del </span><span class="s1">game</span>
+<a name="l43"><span class="ln">43   </span></a>                    <span class="s0">elif </span><span class="s1">self.btn1[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">x </span><span class="s2">&lt;= </span><span class="s1">self.btn1[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn1[</span><span class="s4">2</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l44"><span class="ln">44   </span></a>                        <span class="s0">if </span><span class="s1">self.btn1[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">y </span><span class="s2">&lt;= </span><span class="s1">self.btn1[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn1[</span><span class="s4">3</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l45"><span class="ln">45   </span></a>                            <span class="s1">game2 </span><span class="s2">= </span><span class="s1">Game2(self.win)</span>
+<a name="l46"><span class="ln">46   </span></a>                            <span class="s1">game2.run()</span>
+<a name="l47"><span class="ln">47   </span></a>                            <span class="s0">del </span><span class="s1">game2</span>
+<a name="l48"><span class="ln">48   </span></a>                    <span class="s0">elif </span><span class="s1">self.btn2[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">x </span><span class="s2">&lt;= </span><span class="s1">self.btn2[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn2[</span><span class="s4">2</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l49"><span class="ln">49   </span></a>                        <span class="s0">if </span><span class="s1">self.btn2[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">&lt;= </span><span class="s1">y </span><span class="s2">&lt;= </span><span class="s1">self.btn2[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">self.btn2[</span><span class="s4">3</span><span class="s1">]</span><span class="s2">:</span>
+<a name="l50"><span class="ln">50   </span></a>                            <span class="s1">game3 </span><span class="s2">= </span><span class="s1">Game3(self.win)</span>
+<a name="l51"><span class="ln">51   </span></a>                            <span class="s1">game3.run()</span>
+<a name="l52"><span class="ln">52   </span></a>                            <span class="s0">del </span><span class="s1">game3</span>
+<a name="l53"><span class="ln">53   </span></a>            <span class="s1">self.draw()</span>
+<a name="l54"><span class="ln">54   </span></a>
+<a name="l55"><span class="ln">55   </span></a>        <span class="s1">pygame.quit()</span>
+<a name="l56"><span class="ln">56   </span></a>
+<a name="l57"><span class="ln">57   </span></a>    <span class="s0">def </span><span class="s1">draw(self)</span><span class="s2">:</span>
+<a name="l58"><span class="ln">58   </span></a>        <span class="s1">self.win.blit(self.bg, (</span><span class="s4">0</span><span class="s1">, </span><span class="s4">0</span><span class="s1">))</span>
+<a name="l59"><span class="ln">59   </span></a>        <span class="s1">self.win.blit(logo, (self.width </span><span class="s2">/ </span><span class="s4">2 </span><span class="s2">- </span><span class="s1">logo.get_width() </span><span class="s2">/ </span><span class="s4">2</span><span class="s1">, </span><span class="s4">50</span><span class="s1">))</span>
+<a name="l60"><span class="ln">60   </span></a>        <span class="s1">self.win.blit(start_btn, (self.btn[</span><span class="s4">0</span><span class="s1">], self.btn[</span><span class="s4">1</span><span class="s1">]))</span>
+<a name="l61"><span class="ln">61   </span></a>        <span class="s1">self.win.blit(start_btn1, (self.btn1[</span><span class="s4">0</span><span class="s1">], self.btn1[</span><span class="s4">1</span><span class="s1">]))</span>
+<a name="l62"><span class="ln">62   </span></a>        <span class="s1">self.win.blit(start_btn2, (self.btn2[</span><span class="s4">0</span><span class="s1">], self.btn2[</span><span class="s4">1</span><span class="s1">]))</span>
+<a name="l63"><span class="ln">63   </span></a>        <span class="s1">pygame.display.update()</span>
+<a name="l64"><span class="ln">64   </span></a></pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="static/images/favicon5.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    ::placeholder {
+  color:  #007bff;
+  opacity: 1.0; /* Firefox */
+}
+
+
+</style>
+<body style="background-color: #17202A; color: white;">
+<div>
+    <div style="text-align: center;">
+        <h1 style="padding-top: 200px;">Login!</h1>
+        <p style="font-size: 25px; color:#979A9A;">Please login in order to use our features.</p>
+        <form method="post" style="padding-top: 20px;">
+            <input class="container-fluid" type="text" name="username" placeholder="Enter username"
+                   style="margin-bottom: 20px; width: 800px; height: 50px;">
+            <p><input class="container-fluid" type="password" name="password" placeholder="Enter password"
+                      style="margin-bottom: 20px; width: 800px; height: 50px;"></p>
+            <p><input type="submit" name="submit" style="color: #007bff;"></p>
+        </form>
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for msg in messages %}
+        <p>{{msg}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+</body>
+</html>

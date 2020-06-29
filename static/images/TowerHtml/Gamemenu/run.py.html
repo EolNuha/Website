@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>run.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #66d9ef; font-style: italic;}
+.s1 { color: #f8f8f2;}
+.s2 { color: #f92672;}
+.s3 { color: #e6db74;}
+.s4 { color: #ae81ff;}
+.ln { color: #f8f8f2; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#272822">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+run.py</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">import </span><span class="s1">pygame</span>
+<a name="l2"><span class="ln">2    </span></a>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">if </span><span class="s1">__name__ </span><span class="s2">== </span><span class="s3">&quot;__main__&quot;</span><span class="s2">:</span>
+<a name="l4"><span class="ln">4    </span></a>    <span class="s1">pygame.init()</span>
+<a name="l5"><span class="ln">5    </span></a>    <span class="s1">win </span><span class="s2">= </span><span class="s1">pygame.display.set_mode((</span><span class="s4">1350</span><span class="s1">, </span><span class="s4">700</span><span class="s1">))</span>
+<a name="l6"><span class="ln">6    </span></a>    <span class="s0">from </span><span class="s1">main_menu.main_menu </span><span class="s0">import </span><span class="s1">MainMenu</span>
+<a name="l7"><span class="ln">7    </span></a>    <span class="s1">mainMenu </span><span class="s2">= </span><span class="s1">MainMenu(win)</span>
+<a name="l8"><span class="ln">8    </span></a>    <span class="s1">mainMenu.run()</span>
+<a name="l9"><span class="ln">9    </span></a></pre>
+</body>
+</html>

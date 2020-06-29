@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Snake Game{% endblock %}
+{% block content %}
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+
+
+
+
+</style>
+<body>
+
+<p style="text-align: center; background-color: #17202A; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px">
+    Snake Game</p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>What is Snake Game?</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            <strong>Snake Game</strong> is the recreation of the classic game on our dad's nokia phones if you've
+            managed to catch that time.<br>
+            To play this game use all the keys to move forward, backwards, left, and right.<br>
+            So in this game there's not really anything different, there's just one level and that is until your snake
+            gets to big to play. So that is kinda like your victory.<br>
+        </p>
+        <h3 style="margin-bottom: 25px;">Down here you'll see screenshots of the game:</h3>
+
+
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides1" style="text-align: center;">
+            <img src="static/images/snake2.png" style="width:70%">
+        </div>
+
+        <div class="mySlides1" style="text-align: center;">
+            <img src="static/images/snake1.png" style="width:70%">
+        </div>
+
+        <div class="mySlides1" style="text-align: center;">
+            <img src="static/images/snake3.png" style="width:70%">
+        </div>
+        <div class="mySlides1" style="text-align: center;">
+            <img src="static/images/snake4.png" style="width:70%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+    </div>
+
+    <script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+
+    </script>
+
+
+    <hr style="background-color: #2E4053; margin: 105px 10px 0px;">
+</div>
+<div class="main" id="section2" style="padding: 40px 0px 50px">
+    <div class="container-fluid" style="color: white;">
+        <h2>Link to download the application to play the game!</h2>
+        <div id="example2">
+            <p style="font-size: 25px; color:#979A9A;">Actually in this game there aren't two files but just the
+                application for the game<br>
+                Because it is just a simple game, there was no need for images and sounds.<br>
+                So when you download it, it's not in a zip file either. So just start playing.
+            </p>
+        </div>
+        <h3 style="margin-top: 15px;">Click on the Snake logo to download the application:
+        </h3>
+
+        <a href="static/images/Snake Game.exe" download style="margin-left: 20px;">
+            <img src="static/images/snake.ico" alt="Snake Game" width="104">
+        </a>
+
+
+    </div>
+</div>
+</body>
+{% endblock %}

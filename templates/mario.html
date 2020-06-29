@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Super Mario Bros{% endblock %}
+{% block content %}
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+
+</style>
+<body>
+
+<p style="text-align: center; background-color: #17202A; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px">
+    Super Mario Bros</p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>What is Super Mario Bros?</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            <strong>Super Mario Bros</strong> is the recreation of the old <strong>Super Mario Bros</strong> level 1.
+            Its exactly like that.<br>
+            You can eat the mushroom to get bigger and gain one extra life. You have to jump and avoid the monsters and
+            the turtle.<br>
+            To play this game use the up button or the letter 'a' to jump, the left and right arrows to move left and
+            right. The game is
+            on a timer, it means that after 5 minutes if you don't complete the level than you will lose.<br>
+            Also the more coins you make its better for your score on the game.<br>
+        </p>
+        <h3 style="margin-bottom: 25px;">Down here you'll see screenshots of the game:</h3>
+
+
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides1">
+            <img src="static/images/mario.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/mario1.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/mario2.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/mario3.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/mario4.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/mario5.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/mario6.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/mario7.png" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+    </div>
+
+    <script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+
+    </script>
+
+
+    <hr style="background-color: #2E4053; margin: 105px 10px 0px;">
+</div>
+<div class="main" id="section2" style="padding: 40px 0px 50px">
+    <div class="container-fluid" style="color: white;">
+        <h2>Link to download the application to play the game!</h2>
+        <div id="example2">
+            <p style="font-size: 25px; color:#979A9A;">In the downloaded file you'll have two folders: <strong>the
+                app</strong> and <strong>the photos</strong>
+                folder. In the photos folder are all the game assets needed to play the game.<br>
+                For the game to work the app and the photos folder need to be in the same directory.<br>
+                The downloaded file will come in the form of a zip file but just extract it to a normal file.<br>
+            </p>
+        </div>
+        <h3 style="margin-top: 15px;">Click on the Mario logo to download the application:</h3>
+        <a href="static/images/SuperMario.zip" download style="margin-left: 20px;">
+            <img src="static/images/super-mario.png" alt="Super Mario" width="104">
+        </a>
+    </div>
+
+</div>
+</body>
+{% endblock %}

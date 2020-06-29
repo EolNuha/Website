@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}Tower War{% endblock %}
+{% block content %}
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3, .mySlides4 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+
+</style>
+<body>
+
+<p style="text-align: center; background-color: #17202A; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px">
+    Tower War</p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>What is Tower War?</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            <strong>Tower War</strong> is an original game that i've based on a game that i always used to play when i
+            was young.<br>
+            This is a game that you have to buy towers and put them in strategic places that you can to most damage to
+            monsters.
+            There are three difficulties: 'Easy', 'Normal', 'Hard'. With each difficulty there are twenty levels, and
+            with each level the game gets harder to beat.<br>
+            Every five levels of the game, there will be a boss monster that is bigger and stronger than the rest, but
+            so are the rewards if you manage to defeat it. In order to win you have to defeat every level in the
+            game.<br>
+        </p>
+        <h3 style="margin-bottom: 25px;">Down here you'll see screenshots of the game:</h3>
+
+
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides1">
+            <img src="static/images/tower.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/tower11.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/tower12.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/tower10.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/tower3.png" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+    </div>
+    <div class="container-fluid" style="color: white; margin-top: 45px;">
+        <h3>Down here you'll see the attack towers in the game:</h3>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/tower6.png" height="120px" style="width:10%">
+        </div>
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/tower7.png" height="120px" style="width:10%">
+        </div>
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/tower8.png" height="120px" style="width:10%">
+        </div>
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/tower9.png" height="120px" style="width:10%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+    </div>
+    <div class="container-fluid" style="color: white; margin-top: 45px;">
+        <h3>Down here you'll see the support towers in the game:</h3>
+        <p style="font-size: 25px; color:#979A9A;">
+            The orange tower increases the range of attack towers "+range", and the blue tower increases the damage of
+            attack towers "+damage"
+        </p>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/tower4.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/tower5.png" style="width:10%">
+        </div>
+        <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+    </div>
+    <div class="container-fluid" style="color: white; margin-top: 45px;">
+        <h3>Down here you'll see the monsters in the game:</h3>
+        <p style="font-size: 25px; color:#979A9A;">
+            From the first to the last monster, each one is stronger than the previous.
+        </p>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/2.png" height="104" style="width:10%">
+        </div>
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/3.png" height="104" style="width:10%">
+        </div>
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/4.png" height="104" style="width:10%">
+        </div>
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/5.png" height="104" style="width:10%">
+        </div>
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/6.png" height="104" style="width:10%">
+        </div>
+        <div class="mySlides4" style="text-align: center;">
+            <img src="static/images/7.png" height="104" style="width:10%">
+        </div>
+        <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
+    </div>
+
+    <script>
+var slideIndex = [1,1,1,1];
+var slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4"]
+showSlides(1, 0);
+showSlides(1, 1);
+showSlides(1, 2);
+showSlides(1, 3);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+
+
+
+    </script>
+
+    <hr style="background-color: #2E4053; margin: 105px 10px 0px;">
+</div>
+
+
+<div class="main" id="section2" style="padding: 40px 0px 50px">
+    <div class="container-fluid" style="color: white;">
+        <h2>Link to download the application to play the game!</h2>
+        <div id="example2">
+            <p style="font-size: 25px; color:#979A9A;">In the downloaded file you'll have two folders: <strong>the
+                app</strong> and <strong>the photos</strong>
+                folder. In the photos folder are all the game assets needed to play the game.<br>
+                For the game to work the app and the photos folder need to be in the same directory.<br>
+                The downloaded file will come in the form of a zip file but just extract it to a normal file.<br>
+            </p>
+        </div>
+        <h3 style="margin-top: 15px;">Click on the Tower War logo to download the application:</h3>
+
+        <a href="static/images/Tower War Game.zip" download style="margin-left: 20px;">
+            <img src="static/images/weapons.png" alt="Tower War Game" width="104">
+        </a>
+
+
+    </div>
+</div>
+</body>
+{% endblock %}

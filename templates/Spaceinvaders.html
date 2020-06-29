@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block title %}Space Invaders{% endblock %}
+{% block content %}
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+</style>
+<body>
+
+<p style="text-align: center; background-color: #17202A; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px">
+    Space Invaders</p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>What is Space Invaders?</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            <strong>Space invaders</strong> is like the classic '80s space invaders game where you have a spaceship and
+            you shoot aliens and avoid asteroids.<br>
+            To play this game you use the left and right arrows in order to move left and right, and the space bar to
+            shoot bullets to hit the aliens.<br>
+            With each level the spaceship changes and you can shoot more bullets, but also the number of aliens and
+            asteroid rises.<br>
+            The game has six normal levels and two boss levels. If you manage to defeat the second boss you'll enter an
+            infinite level where you can play as long as you like until you lose your lives.<br>
+        </p>
+        <h3 style="margin-bottom: 25px;">Down here you'll see screenshots of the game:</h3>
+
+
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides1">
+            <img src="static/images/space.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/space1.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/space2.png" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+    </div>
+    <div class="container-fluid" style="color: white; margin-top: 45px;">
+        <h3>Down here you'll see the spaceships in the game:</h3>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/player3.png" style="width:10%">
+        </div>
+
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/player2.png" style="width:10%">
+        </div>
+
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/player.png" style="width:10%">
+        </div>
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/rocket.png" style="width:10%">
+        </div>
+        <div class="mySlides2" style="text-align: center;">
+            <img src="static/images/rocket-ship.png" style="width:10%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+
+    </div>
+    <div class="container-fluid" style="color: white; margin-top: 45px;">
+        <h3>Down here you'll see the aliens and the asteroids in the game:</h3>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien5.png" style="width:10%">
+        </div>
+
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien8.png" style="width:10%">
+        </div>
+
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien3.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien6.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien7.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien9.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien10.png" style="width:10%">
+        </div>
+        <div class="mySlides3" style="text-align: center;">
+            <img src="static/images/alien11.png" style="width:10%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+
+
+    </div>
+
+    <script>
+var slideIndex = [1,1,1];
+var slideId = ["mySlides1", "mySlides2", "mySlides3"]
+showSlides(1, 0);
+showSlides(1, 1);
+showSlides(1, 2);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+
+
+
+
+    </script>
+
+
+    <hr style="background-color: #2E4053; margin: 105px 10px 0px;">
+</div>
+
+<div class="main" id="section2" style="padding: 40px 0px 50px">
+
+    <div class="container-fluid" style="color: white;">
+        <h2>Link to download the application to play the game!</h2>
+        <div id="example2">
+            <p style="font-size: 25px; color:#979A9A;">
+                In the downloaded file you'll have two folders: <strong>the app</strong> and <strong>the photos</strong>
+                folder. In the photos folder are all the game assets needed to play the game.<br>
+                For the game to work the app and the photos folder need to be in the same directory.<br>
+                The downloaded file will come in the form of a zip file but just extract it to a normal file.<br>
+            </p>
+        </div>
+        <h3 style="margin-top: 15px;">Click on the Space Invaders logo to download the application:</h3>
+
+        <a href="static/images/Space Invaders Game.zip" download style="margin-left: 20px;">
+            <img src="static/images/icon.ico" alt="Space Invaders" width="104">
+        </a>
+
+
+    </div>
+</div>
+</body>
+{% endblock %}

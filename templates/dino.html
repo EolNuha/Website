@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Dinosaur Game{% endblock %}
+{% block content %}
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+
+
+</style>
+<body>
+
+<p style="text-align: center; background-color: #17202A; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px">
+    Dinosaur Game</p>
+
+
+<div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
+    <div class="container-fluid" style="color: white;">
+        <h2>What is Dinosaur Game?</h2>
+        <p style="font-size: 25px; color:#979A9A;">
+            <strong>Dinosaur Game</strong> is like the google chrome's game when there is no internet connection. So
+            yeah this is a recreation of that game.<br>
+            To play this game use the up or space bar button to jump and the down button to crouch. There is also a
+            pause option when the letter 'p' is hit.<br>
+            You'll come to see that i've made some little changes, like tha pause option or the sound on and off option.<br>
+            In this version there's also an entering window to start the game.<br>
+        </p>
+        <h3 style="margin-bottom: 25px;">Down here you'll see screenshots of the game:</h3>
+
+
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides1">
+            <img src="static/images/dino.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/dino1.png" style="width:100%">
+        </div>
+
+        <div class="mySlides1">
+            <img src="static/images/dino3.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/dino4.png" style="width:100%">
+        </div>
+        <div class="mySlides1">
+            <img src="static/images/dino2.png" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+    </div>
+
+    <script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+
+
+
+
+
+
+    </script>
+
+
+    <hr style="background-color: #2E4053; margin: 105px 10px 0px;">
+</div>
+<div class="main" id="section2" style="padding: 40px 0px 50px">
+    <div class="container-fluid" style="color: white;">
+        <h2>Link to download the application to play the game!</h2>
+        <div id="example2">
+            <p style="font-size: 25px; color:#979A9A;">In the downloaded file you'll have two folders: <strong>the
+                app</strong> and <strong>the photos</strong>
+                folder. In the photos folder are all the game assets needed to play the game.<br>
+                For the game to work the app and the photos folder need to be in the same directory.<br>
+                The downloaded file will come in the form of a zip file but just extract it to a normal file.<br>
+            </p>
+        </div>
+        <h3 style="margin-top: 15px;">Click on the Dinosaur logo to download the application:<span
+                class="glyphicon glyphicon-download"></span></h3>
+
+        <a href="static/images/Dino Game.zip" download style="margin-left: 20px;">
+            <img src="static/images/1.png" alt="Dinosaur Game" width="104">
+        </a>
+
+
+    </div>
+</div>
+</body>
+{% endblock %}
