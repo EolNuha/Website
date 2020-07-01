@@ -25,13 +25,14 @@ app.permanent_session_lifetime = timedelta(days=7)
 def before_request():
     g.user = None
     if 'user_id' in session:
-        user = [x for x in users if x.id == session['user_id']][0]
+        user = [x for x in users if x.id == session['user_id']]
         g.user = user
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        session.permanent = True
         username = request.form['username']
         password = request.form['password']
 
@@ -54,6 +55,7 @@ def login():
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
+        session.permanent = True
         username = request.form['usr']
         password = request.form['psw']
         users.append(user(id=len(users) + 1, username=username, password=password))
