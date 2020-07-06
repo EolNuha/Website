@@ -182,7 +182,7 @@ function topFunction() {
     {% endblock %}
 </div>
 <div class="topnav" id="myTopnav">
-    <a><img src="static/images/favicon5.png" alt="Logo" height="30"></a>
+    <a style="background-color:#2E4053;"><img src="static/images/favicon5.png" alt="Logo" height="30"></a>
     <a href="/home" style="color: white; font-size: 20px; opacity: 0.7;">Home</a>
     <a href="/spaceinvaders">Space Invaders<img src="static/images/icon.ico" alt="Space Invaders" width="30"
                                                 style="margin-left: 5px;"></a>
@@ -201,10 +201,10 @@ function topFunction() {
             style="margin-left: 5px;"></a>
     <div class="topnav-right">
         {% if not "user" in session %}
-            <a href="/login" style="font-size: 20px;">Login</a>
+            <a href="/login" style="font-size: 20px;">Log In</a>
         {% endif %}
         {% if "user" in session %}
-        <a href="/logout" style="font-size: 20px;">Logout</a>
+        <a href="/logout" style="font-size: 20px;">Log Out</a>
         {% endif %}
     </div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">

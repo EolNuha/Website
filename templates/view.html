@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}user{% endblock %}
 {% block content %}
-{% for item in values %}
-<p class="container-fluid">Name: {{item.name}}, Password: {{item.password}}</p>
-{% endfor %}
+<div style="margin-top: 50px;">
+    {% for item in values %}
+    <p class="container-fluid">Name: {{item.name}}, Password: {{item.password}}</p>
+    {% endfor %}
+</div>
 {% endblock %}

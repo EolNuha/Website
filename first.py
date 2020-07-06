@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, session, redirect, url_for, g, flash
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
-
 
 app = Flask(__name__)
 app.secret_key = "eol"
@@ -11,10 +10,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+
 class lists(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column(db.String(5))
-    password = db.Column(db.String(5))
+    name = db.Column(db.String(100))
+    password = db.Column(db.String(100))
 
     def __init__(self, name, password):
         self.name = name
@@ -24,6 +24,7 @@ class lists(db.Model):
 @app.route("/view")
 def view():
     return render_template("view.html", values=lists.query.all())
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
@@ -43,7 +44,10 @@ def login():
         else:
             flash(f"Wrong username!")
             return redirect(url_for("login"))
-    return render_template('login.html')
+    else:
+        if "user" in session:
+            return redirect(url_for("home"))
+        return render_template("login.html")
 
 
 @app.route("/signup", methods=["POST", "GET"])
@@ -52,18 +56,26 @@ def signup():
         user = request.form["name"]
         password = request.form["password"]
         session.permanent = True
+        found_user = lists.query.filter_by(name=user).first()
+        if found_user:
+            flash(f"Username unavailable!")
+            return redirect(url_for("signup"))
         usr = lists(user, password)
         db.session.add(usr)
         db.session.commit()
-        flash(f"Signup successful")
+        flash("Signed up successful. Please enter the username and password again!")
         return redirect(url_for("login"))
-    return render_template('signup.html')
+    else:
+        if "user" in session:
+            return redirect(url_for("home"))
+        return render_template("signup.html")
+
 
 @app.route("/logout")
 def logout():
     if "user" in session:
         user = session["user"]
-        flash(f"Logged out successful")
+        flash(f"Logged out successful!")
     session.pop("user", None)
     session.pop("password", None)
 

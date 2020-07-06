@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signup Page</title>
+    <title>Sign Up Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/png" href="static/images/favicon5.png">
@@ -16,23 +16,30 @@
 }
 
 
+
+
 </style>
 <body style="background-color: #17202A; color: white;">
 <div>
     <div style="text-align: center;">
-        <h1 style="padding-top: 200px;">Signup!</h1>
-        <p style="font-size: 25px; color:#979A9A;">Please signup in order to login.</p>
+        <h1 style="padding-top: 200px;">Sign Up</h1>
+        <p style="font-size: 25px; color:#979A9A;">Please sign up in order to log in.</p>
         <form method="post" style="padding-top: 20px;">
             <input class="container-fluid" type="text" name="name" placeholder="Enter username"
-                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;">
+                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;" required
+                   minlength="4">
             <p><input class="container-fluid" type="password" name="password" placeholder="Enter password"
-                      style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"></p>
+                      style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"
+                      pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+                      title="Must contain at least one number and lowercase letter, and at least 8 or more characters"
+                      required>
+            </p>
             <p><input type="submit" name="submit" style="color: #007bff;"></p>
         </form>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for msg in messages %}
-        <p>{{msg}}</p>
+        <p style="color: red; opacity: 0.7;">{{msg}}</p>
         {% endfor %}
         {% endif %}
         {% endwith %}
