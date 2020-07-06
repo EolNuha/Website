@@ -91,7 +91,7 @@ def home():
 @app.route("/spaceinvaders")
 def space():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('Spaceinvaders.html')
 
@@ -99,7 +99,7 @@ def space():
 @app.route("/dinogame")
 def dino():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('dino.html')
 
@@ -107,7 +107,7 @@ def dino():
 @app.route("/towerwar")
 def tower():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('tower.html')
 
@@ -115,7 +115,7 @@ def tower():
 @app.route("/supermario")
 def mario():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('mario.html')
 
@@ -123,7 +123,7 @@ def mario():
 @app.route("/snakegame")
 def snake():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('snake.html')
 
@@ -131,7 +131,7 @@ def snake():
 @app.route("/sourcecode")
 def source():
     if not "user" in session:
-        flash(f"Please login!")
+        flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('source.html')
 
