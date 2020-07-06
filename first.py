@@ -1,74 +1,71 @@
 from flask import Flask, render_template, request, session, redirect, url_for, g, flash
 from datetime import timedelta
+from flask_sqlalchemy import SQLAlchemy
 
-
-class user:
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
-
-    def __repr__(self):
-        return f'<User: {self.username}>'
-
-
-users = []
-users.append(user(id=1, username='eoli', password='kosova22'))
-users.append(user(id=2, username='ledri', password='ledri123'))
 
 app = Flask(__name__)
-app.secret_key = 'eolnuha'
+app.secret_key = "eol"
 app.permanent_session_lifetime = timedelta(days=7)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lists.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class lists(db.Model):
+    _id = db.Column("id", db.Integer, primary_key=True)
+    name = db.Column(db.String(5))
+    password = db.Column(db.String(5))
+
+    def __init__(self, name, password):
+        self.name = name
+        self.password = password
 
 
-@app.before_request
-def before_request():
-    g.user = None
-    if 'user_id' in session:
-        user = [x for x in users if x.id == session['user_id']]
-        g.user = user
+@app.route("/view")
+def view():
+    return render_template("view.html", values=lists.query.all())
 
-
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=["POST", "GET"])
 def login():
-    if request.method == 'POST':
+    if request.method == "POST":
         session.permanent = True
-        username = request.form['username']
-        password = request.form['password']
+        user = request.form["name"]
+        found_user = lists.query.filter_by(name=user).first()
+        if found_user:
+            password = request.form["password"]
+            if found_user.password == password:
+                session["user"] = user
+                return redirect(url_for("home"))
+            else:
+                flash(f"Wrong password!")
+                return redirect(url_for("login"))
 
-        user1 = [x for x in users if x.username == username]
-        if not user1:
+        else:
             flash(f"Wrong username!")
-            return render_template('login.html')
-
-        user = [x for x in users if x.username == username][0]
-
-        if user and user.password == password:
-            session['user_id'] = user.id
-            return redirect(url_for('home'))
-        flash(f"Wrong password!")
-        return redirect(url_for('login'))
-
+            return redirect(url_for("login"))
     return render_template('login.html')
 
 
-@app.route("/signup", methods=['GET', 'POST'])
+@app.route("/signup", methods=["POST", "GET"])
 def signup():
-    if request.method == 'POST':
+    if request.method == "POST":
+        user = request.form["name"]
+        password = request.form["password"]
         session.permanent = True
-        username = request.form['usr']
-        password = request.form['psw']
-        users.append(user(id=len(users) + 1, username=username, password=password))
-        flash(f"Please enter the username and password again!")
-        return redirect(url_for('login'))
+        usr = lists(user, password)
+        db.session.add(usr)
+        db.session.commit()
+        flash(f"Signup successful")
+        return redirect(url_for("login"))
     return render_template('signup.html')
-
 
 @app.route("/logout")
 def logout():
-    if g.user:
-        flash(f"Logged out successful!")
-    session.pop('user_id', None)
+    if "user" in session:
+        user = session["user"]
+        flash(f"Logged out successful")
+    session.pop("user", None)
+    session.pop("password", None)
 
     return redirect(url_for("login"))
 
@@ -81,7 +78,7 @@ def home():
 
 @app.route("/spaceinvaders")
 def space():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('Spaceinvaders.html')
@@ -89,7 +86,7 @@ def space():
 
 @app.route("/dinogame")
 def dino():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('dino.html')
@@ -97,7 +94,7 @@ def dino():
 
 @app.route("/towerwar")
 def tower():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('tower.html')
@@ -105,7 +102,7 @@ def tower():
 
 @app.route("/supermario")
 def mario():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('mario.html')
@@ -113,7 +110,7 @@ def mario():
 
 @app.route("/snakegame")
 def snake():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('snake.html')
@@ -121,11 +118,12 @@ def snake():
 
 @app.route("/sourcecode")
 def source():
-    if not g.user:
+    if not "user" in session:
         flash(f"Please login!")
         return redirect(url_for('login'))
     return render_template('source.html')
 
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)

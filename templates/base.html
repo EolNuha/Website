@@ -200,10 +200,10 @@ function topFunction() {
             src="static/images/snake.ico" alt="Snake Game" width="30"
             style="margin-left: 5px;"></a>
     <div class="topnav-right">
-        {% if not g.user %}
+        {% if not "user" in session %}
             <a href="/login" style="font-size: 20px;">Login</a>
         {% endif %}
-        {% if g.user %}
+        {% if "user" in session %}
         <a href="/logout" style="font-size: 20px;">Logout</a>
         {% endif %}
     </div>
