@@ -149,6 +149,8 @@ html {
 }
 
 
+
+
 </style>
 <body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -173,6 +175,8 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
+
+
 </script>
 <div style="padding-top: 50px;">
     {% block content %}
@@ -181,24 +185,25 @@ function topFunction() {
 <div class="topnav" id="myTopnav">
     <a style="background-color:#2E4053;"><img src="static/images/favicon5.png" alt="Logo" height="30"></a>
     <a href="/home" style="color: white; font-size: 20px; opacity: 0.7;">Home</a>
-    <a href="/spaceinvaders">Space Invaders<img src="static/images/icon.ico" alt="Space Invaders" width="30"
-                                                style="margin-left: 5px;"></a>
-    <a href="/dinogame">Dinosaur Game<img src="static/images/1.png"
-                                          alt="Dinosaur Game"
-                                          width="30"
-                                          style="margin-left: 5px;"></a>
-    <a href="/towerwar">Tower War<img
-            src="static/images/weapons.png" alt="Tower War Game" height="30"
+    <a href="/spaceinvaders" style="font-size: 20px;">Space Invaders<img src="static/images/icon.ico"
+                                                                         alt="Space Invaders" height="27"
+                                                                         style="margin-left: 5px;"></a>
+    <a href="/dinogame" style="font-size: 20px;">Dinosaur Game<img src="static/images/1.png"
+                                                                   alt="Dinosaur Game"
+                                                                   height="27"
+                                                                   style="margin-left: 5px;"></a>
+    <a href="/towerwar" style="font-size: 20px;">Tower War<img
+            src="static/images/weapons.png" alt="Tower War Game" height="27"
             style="margin-left: 5px;"></a>
-    <a href="/supermario">Super Mario Bros<img
-            src="static/images/super-mario.png" alt="Super Mario Bros" height="30"
+    <a href="/supermario" style="font-size: 20px;">Super Mario Bros<img
+            src="static/images/super-mario.png" alt="Super Mario Bros" height="27"
             style="margin-left: 5px;"></a>
-    <a href="/snakegame">Snake Game<img
-            src="static/images/snake.ico" alt="Snake Game" height="30"
+    <a href="/snakegame" style="font-size: 20px;">Snake Game<img
+            src="static/images/snake.ico" alt="Snake Game" height="27"
             style="margin-left: 5px;"></a>
     <div class="topnav-right">
         {% if not "user" in session %}
-            <a href="/login" style="font-size: 20px;">Log In</a>
+        <a href="/login" style="font-size: 20px;">Log In</a>
         {% endif %}
         {% if "user" in session %}
         <a href="/logout" style="font-size: 20px;">Log Out</a>
@@ -218,6 +223,8 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+
+
 
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
