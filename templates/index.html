@@ -85,6 +85,12 @@ transform: rotate(45deg);
   padding: 5px;
 }
 
+@media only screen and (max-width: 995px) {
+    #btngroup {
+        display: none;
+    }
+}
+
 
 
 
@@ -92,7 +98,7 @@ transform: rotate(45deg);
 <body>
 <div class="main" id="section1" style="margin: 0px 0px 0px 0px;">
     <p style="font-family: 'stencil'; text-align: center; color: #007bff; font-size: 65px; margin: 0px 0px 0px 0px; padding-top: 30px;">
-    PyGames with Eol <img src="static/images/123456.png" width="120" style="margin-top: -15px;"></p>
+        PyGames with Eol <img src="static/images/123456.png" width="120" style="margin-top: -15px;"></p>
     <div class="container-fluid" style="color: white;">
         <h2>How i started building my first games?</h2>
         <p style="font-size: 25px; color:#979A9A;">I have always been the kind of guy that was more into building stuff
@@ -117,7 +123,7 @@ transform: rotate(45deg);
             <a href="https://www.python.org/downloads/" target="_blank">Python Link</a>
         </p>
         <div class="row" style="padding-bottom: 50px;">
-            <div class="column" id="example1" style="margin-right: 25px; margin-left: 25px;">
+            <div class="column" id="example1" style="margin-right: 25px; margin-left: 25px; margin-top: 25px;">
                 <p style="font-size: 23px; color:white; font-family:'Courier New'; padding: 0px 10px 0px;"><i>
                     The day I discovered <strong>@python</strong> was a good day, amazing values and incredible power to
                     solve and create
@@ -129,9 +135,10 @@ transform: rotate(45deg);
                     <strong>Eol Nuha: Game and Web developer</strong>
                 </p>
             </div>
-            <div class="column" id="example11" style="margin-right: 25px; margin-left: 25px;">
+            <div class="column" id="example11" style="margin-right: 25px; margin-left: 25px; margin-top: 25px;">
                 <p style="font-size: 23px; color:white; font-family:'Courier New'; padding: 0px 10px 0px;"><i>
-                    I can still remember as it were yesterday, the day when Eol created his first game. All day he smiled
+                    I can still remember as it were yesterday, the day when Eol created his first game. All day he
+                    smiled
                     at he's <strong>"Space Invaders"</strong> game.</i><br>
                     <i>I think that from that moment on ,despite being very proud with himself,
                         he also decided what he wanted to be in the future.</i><br>
@@ -183,86 +190,91 @@ transform: rotate(45deg);
             </ul>
 
         </div>
-        <p style="font-size: 27px; color: white; margin: 20px 0px 50px;">
-            The links below will take you to the game's page and there you'll find all the information about the game.
-            Enjoy!
-        </p>
+        <div id="btngroup">
+            <p style="font-size: 27px; color: white; margin: 20px 0px 50px;">
+                The links below will take you to the game's page and there you'll find all the information about the
+                game.
+                Enjoy!
+            </p>
 
 
+            <div class="container">
 
-        <div class="container" style="padding: 0px 0px 150px">
-            <div class="btn-group">
-                <div class="btn-group">
-                    <a href="/spaceinvaders">
-                        <button type="button" class="btn btn-primary btn-lg">Space Invaders<img
-                                src="static/images/icon.ico" alt="Space Invaders" width="25" style="margin-left: 5px;">
+                <div class="btn-group" style="text-align: center; padding: 0px 0px 150px">
+                    <div class="btn-group">
+                        <a href="/spaceinvaders">
+                            <button type="button" class="btn btn-primary btn-lg">Space Invaders<img
+                                    src="static/images/icon.ico" alt="Space Invaders" width="25"
+                                    style="margin-left: 5px;">
+                            </button>
+                        </a>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
                         </button>
-                    </a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li style="margin-left: 10px;"><a href="/spaceinvaders#section1">About game</a></li>
-                        <li style="margin-left: 10px;"><a href="/spaceinvaders#section2">Download app</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <a href="/dinogame">
-                        <button type="button" class="btn btn-primary btn-lg">Dinosaur Game<img src="static/images/1.png"
-                                                                                               alt="Dinosaur Game"
-                                                                                               width="25"
-                                                                                               style="margin-left: 5px;">
+                        <ul class="dropdown-menu" role="menu">
+                            <li style="margin-left: 10px;"><a href="/spaceinvaders#section1">About game</a></li>
+                            <li style="margin-left: 10px;"><a href="/spaceinvaders#section2">Download app</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="/dinogame">
+                            <button type="button" class="btn btn-primary btn-lg">Dinosaur Game<img
+                                    src="static/images/1.png"
+                                    alt="Dinosaur Game"
+                                    width="25"
+                                    style="margin-left: 5px;">
+                            </button>
+                        </a>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
                         </button>
-                    </a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li style="margin-left: 10px;"><a href="/dinogame#section1">About game</a></li>
-                        <li style="margin-left: 10px;"><a href="/dinogame#section2">Download app</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <a href="/towerwar">
-                        <button type="button" class="btn btn-primary btn-lg">Tower War<img
-                                src="static/images/weapons.png" alt="Tower War Game" width="25"
-                                style="margin-left: 5px;"></button>
-                    </a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li style="margin-left: 10px;"><a href="/towerwar#section1">About game</a></li>
-                        <li style="margin-left: 10px;"><a href="/towerwar#section2">Download app</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <a href="/supermario">
-                        <button type="button" class="btn btn-primary btn-lg">Super Mario Bros<img
-                                src="static/images/super-mario.png" alt="Super Mario Bros" width="25"
-                                style="margin-left: 5px;"></button>
-                    </a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li style="margin-left: 10px;"><a href="/supermario#section1">About game</a></li>
-                        <li style="margin-left: 10px;"><a href="/supermario#section2">Download app</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <a href="/snakegame">
-                        <button type="button" class="btn btn-primary btn-lg">Snake Game<img
-                                src="static/images/snake.ico" alt="Snake Game" width="25"
-                                style="margin-left: 5px;"></button>
-                    </a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li style="margin-left: 10px;"><a href="/snakegame#section1">About game</a></li>
-                        <li style="margin-left: 10px;"><a href="/snakegame#section2">Download app</a></li>
-                    </ul>
+                        <ul class="dropdown-menu" role="menu">
+                            <li style="margin-left: 10px;"><a href="/dinogame#section1">About game</a></li>
+                            <li style="margin-left: 10px;"><a href="/dinogame#section2">Download app</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="/towerwar">
+                            <button type="button" class="btn btn-primary btn-lg">Tower War<img
+                                    src="static/images/weapons.png" alt="Tower War Game" width="25"
+                                    style="margin-left: 5px;"></button>
+                        </a>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li style="margin-left: 10px;"><a href="/towerwar#section1">About game</a></li>
+                            <li style="margin-left: 10px;"><a href="/towerwar#section2">Download app</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="/supermario">
+                            <button type="button" class="btn btn-primary btn-lg">Super Mario Bros<img
+                                    src="static/images/super-mario.png" alt="Super Mario Bros" width="25"
+                                    style="margin-left: 5px;"></button>
+                        </a>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li style="margin-left: 10px;"><a href="/supermario#section1">About game</a></li>
+                            <li style="margin-left: 10px;"><a href="/supermario#section2">Download app</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="/snakegame">
+                            <button type="button" class="btn btn-primary btn-lg">Snake Game<img
+                                    src="static/images/snake.ico" alt="Snake Game" width="25"
+                                    style="margin-left: 5px;"></button>
+                        </a>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li style="margin-left: 10px;"><a href="/snakegame#section1">About game</a></li>
+                            <li style="margin-left: 10px;"><a href="/snakegame#section2">Download app</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
