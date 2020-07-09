@@ -74,7 +74,6 @@ def signup():
 @app.route("/logout")
 def logout():
     if "user" in session:
-        user = session["user"]
         flash(f"Logged out successful!")
     session.pop("user", None)
     session.pop("password", None)
