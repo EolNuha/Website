@@ -14,10 +14,14 @@ db = SQLAlchemy(app)
 class lists(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    phone = db.Column(db.String(100))
     password = db.Column(db.String(100))
 
-    def __init__(self, name, password):
+    def __init__(self, name, email, phone, password):
         self.name = name
+        self.email = email
+        self.phone = phone
         self.password = password
 
 
@@ -54,22 +58,70 @@ def login():
 def signup():
     if request.method == "POST":
         user = request.form["name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
         password = request.form["password"]
         session.permanent = True
         found_user = lists.query.filter_by(name=user).first()
         if found_user:
             flash(f"Username unavailable!")
             return redirect(url_for("signup"))
-        usr = lists(user, password)
+        usr = lists(user, email, phone, password)
         db.session.add(usr)
         db.session.commit()
-        flash("Signed up successful. Please enter the username and password again!")
-        return redirect(url_for("login"))
+        session["user"] = user
+        return redirect(url_for("home"))
     else:
         if "user" in session:
             return redirect(url_for("home"))
         return render_template("signup.html")
 
+
+@app.route("/forgotpassword", methods=["POST", "GET"])
+def password():
+    if "user" in session:
+        return redirect(url_for('home'))
+    if request.method == "POST":
+        user = request.form["name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        session.permanent = True
+        found_user = lists.query.filter_by(name=user).first()
+        if found_user:
+            if found_user.email == email:
+                if found_user.phone == phone:
+                    flash(f"Your password is: {found_user.password}")
+                    return render_template("found.html")
+                else:
+                    flash(f"Wrong phone number!")
+            else:
+                flash(f"Wrong email!")
+        else:
+            flash(f"Wrong username!")
+    return render_template("password.html")
+
+@app.route("/changepassword", methods=["POST", "GET"])
+def change():
+    if request.method == "POST":
+        user = request.form["name"]
+        email = request.form["email"]
+        password = request.form["password"]
+        password1 = request.form["password1"]
+        password2 = request.form["password2"]
+        found_user = lists.query.filter_by(name=user).first()
+        if found_user:
+            if found_user.email == email:
+                if found_user.password == password:
+                    if password1 == password2:
+                        found_user.password = password2
+                        db.session.commit()
+                        session["user"] = user
+                        return redirect(url_for('home'))
+                    else:
+                        flash(f"New passwords don't match!")
+        else:
+            flash(f"Account does not exist!")
+    return render_template("change.html")
 
 @app.route("/logout")
 def logout():

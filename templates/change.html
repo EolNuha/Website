@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up Page</title>
+    <title>Change Password Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/png" href="static/images/favicon5.png">
@@ -15,33 +15,44 @@
   opacity: 1.0;
 }
 
-
 </style>
 <body style="background-color: #17202A; color: white;">
 <div style="padding-bottom: 100px;">
     <a href="/home"><img src="static/images/favicon5.png" alt="Logo" height="50" style="padding: 10px 10px 0px"></a>
     <div style="text-align: center;">
-        <h1 style="padding-top: 140px;">Sign Up</h1>
-        <p style="font-size: 25px; color:#979A9A;">Please sign up in order to log in.</p>
-        <p style="font-size: 15px; color:#979A9A;">Email and phone number are optional but if you forgot your password or you want to
-            change it, you can't do it without them.</p>
+        <h1 style="padding-top: 140px;">Change password</h1>
         <form method="post" style="padding-top: 20px;">
             <input class="container-fluid" type="text" name="name" placeholder="Enter username"
                    style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;" required
                    minlength="4">
             <p style="margin-bottom: 0px;"><input class="container-fluid" type="email" name="email"
-                                                  placeholder="Enter email (optional)"
-                                                  style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;">
+                                                  placeholder="Enter email"
+                                                  style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;" required>
             </p>
             <p style="margin-bottom: 0px;"><input class="container-fluid" type="number" name="phone"
                                                   placeholder="Enter phone number (optional)"
                                                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;">
             </p>
-            <p><input class="container-fluid" type="password" name="password" placeholder="Enter password"
-                      style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"
-                      pattern="(?=.*\d)(?=.*[a-z]).{8,}"
-                      title="Must contain at least one number and lowercase letter, and at least 8 or more characters"
-                      required>
+            <p><input
+                    class="container-fluid" type="password" name="password" placeholder="Enter old password"
+                    style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;"
+                    pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+                    title="Must contain at least one number and lowercase letter, and at least 8 or more characters"
+                    required>
+            </p>
+            <p><input
+                    class="container-fluid" type="password" name="password1" placeholder="Enter new password"
+                    style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;"
+                    pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+                    title="Must contain at least one number and lowercase letter, and at least 8 or more characters"
+                    required>
+            </p>
+            <p><input
+                    class="container-fluid" type="password" name="password2" placeholder="Enter new password again"
+                    style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;"
+                    pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+                    title="Must contain at least one number and lowercase letter, and at least 8 or more characters"
+                    required>
             </p>
             <p><input type="submit" name="submit" style="color: #007bff;"></p>
         </form>
