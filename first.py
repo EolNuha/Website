@@ -63,8 +63,12 @@ def signup():
         password = request.form["password"]
         session.permanent = True
         found_user = lists.query.filter_by(name=user).first()
+        found_user1 = lists.query.filter_by(email=email).first()
         if found_user:
             flash(f"Username unavailable!")
+            return redirect(url_for("signup"))
+        if found_user1:
+            flash(f"Another account is already signed up with this email!")
             return redirect(url_for("signup"))
         usr = lists(user, email, phone, password)
         db.session.add(usr)
@@ -100,6 +104,7 @@ def password():
             flash(f"Wrong username!")
     return render_template("password.html")
 
+
 @app.route("/changepassword", methods=["POST", "GET"])
 def change():
     if request.method == "POST":
@@ -112,16 +117,20 @@ def change():
         if found_user:
             if found_user.email == email:
                 if found_user.password == password:
-                    if password1 == password2:
-                        found_user.password = password2
-                        db.session.commit()
-                        session["user"] = user
-                        return redirect(url_for('home'))
+                    if not password == password1:
+                        if password1 == password2:
+                            found_user.password = password2
+                            db.session.commit()
+                            session["user"] = user
+                            return redirect(url_for('home'))
+                        else:
+                            flash(f"New passwords don't match!")
                     else:
-                        flash(f"New passwords don't match!")
+                        flash(f"New password can not be the same as the old one!")
         else:
             flash(f"Account does not exist!")
     return render_template("change.html")
+
 
 @app.route("/logout")
 def logout():
