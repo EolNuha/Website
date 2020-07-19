@@ -1,13 +1,24 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
+
 app.secret_key = "eol"
 app.permanent_session_lifetime = timedelta(days=7)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lists.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.config.update(
+	DEBUG=True,
+	#EMAIL SETTINGS
+	MAIL_SERVER='smtp.gmail.com',
+	MAIL_PORT=465,
+	MAIL_USE_SSL=True,
+	MAIL_USERNAME = 'eol.nuha22@gmail.com',
+	MAIL_PASSWORD = 'haxherja'
+	)
+mail = Mail(app)
 db = SQLAlchemy(app)
 
 
@@ -68,12 +79,17 @@ def signup():
             flash(f"Username unavailable!")
             return redirect(url_for("signup"))
         if found_user1:
-            flash(f"Another account is already signed up with this email!")
+            flash(f"Another account has already signed up with this email!")
             return redirect(url_for("signup"))
         usr = lists(user, email, phone, password)
         db.session.add(usr)
         db.session.commit()
         session["user"] = user
+        msg = Message("Send Mail Tutorial!",
+                      sender="eol.nuha22@gmail.com",
+                      recipients=["olinuha08@hotmail.com"])
+        msg.body = "Yo!\nHave you heard the good word of Python???"
+        mail.send(msg)
         return redirect(url_for("home"))
     else:
         if "user" in session:
@@ -127,6 +143,8 @@ def change():
                             flash(f"New passwords don't match!")
                     else:
                         flash(f"New password can not be the same as the old one!")
+                else:
+                    flash(f"Old password is not correct!")
         else:
             flash(f"Account does not exist!")
     return render_template("change.html")
