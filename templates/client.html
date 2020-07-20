@@ -1,0 +1,7 @@
+<h1>Order from {{client}}</h1>
+<div>
+    {% for item in orders %}
+    <p class="container-fluid">Category: {{item.country}}, Product: {{item.city}}, Quantity: {{item.quantity}}</p>
+    {% endfor %}
+</div>
+

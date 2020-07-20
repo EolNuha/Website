@@ -14,13 +14,9 @@
 <div>
     <a href="/home"><img src="static/images/favicon5.png" alt="Logo" height="50" style="padding: 10px 10px 0px"></a>
     <div style="text-align: center;">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for msg in messages %}
-        <h1 style="color: #007bff; opacity: 1.0;">{{msg}}</h1>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
+        <p>Request was successfully completed. The password was sent to your email.</p>
+        <a href="/login">Back to log in page.</a><br>
+        <a href="/changepassword">Change password.</a>
     </div>
 </div>
 </body>

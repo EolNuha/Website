@@ -36,6 +36,43 @@ class lists(db.Model):
         self.password = password
 
 
+class Order:
+    def __init__(self, id, country, city, quantity):
+        self.id = id
+        self.country = country
+        self.city = city
+        self.quantity=quantity
+
+orders =[]
+
+
+@app.route("/order", methods=["POST", "GET"])
+def order():
+    if not "user" in session:
+        flash(f"Please log in!")
+        return redirect(url_for('login'))
+    if request.method == "POST":
+        country = request.form["country"]
+        city = request.form["city"]
+        quantity = request.form["quantity"]
+        orders.append(Order(id=len(orders) + 1, country=country, city=city, quantity=quantity))
+    if request.method == "GET":
+        client = session["user"]
+        found_user = lists.query.filter_by(name=client).first()
+        email = found_user.email
+        if len(orders) == 0:
+            flash("sban")
+        else:
+            msg = Message("Pygames with Eol!",
+                          sender=email,
+                          recipients=["eol.nuha22@gmail.com"])
+            msg.body = "Greetings"
+            msg.html = render_template('client.html', client=client, orders=orders)
+            mail.send(msg)
+            orders.clear()
+            return render_template("order.html")
+    return render_template("order.html", orders=orders )
+
 @app.route("/view")
 def view():
     return render_template("view.html", values=lists.query.all())
@@ -85,10 +122,10 @@ def signup():
         db.session.add(usr)
         db.session.commit()
         session["user"] = user
-        msg = Message("Send Mail Tutorial!",
+        msg = Message("Pygames with Eol!",
                       sender="eol.nuha22@gmail.com",
-                      recipients=["olinuha08@hotmail.com"])
-        msg.body = "Yo!\nHave you heard the good word of Python???"
+                      recipients=[email])
+        msg.body = "Greetings "+user+"!""\nYour sign up has been successful!\nWelcome to PYGAMES WITH EOL."
         mail.send(msg)
         return redirect(url_for("home"))
     else:
@@ -110,7 +147,12 @@ def password():
         if found_user:
             if found_user.email == email:
                 if found_user.phone == phone:
-                    flash(f"Your password is: {found_user.password}")
+                    msg = Message("Pygames with Eol!",
+                                  sender="eol.nuha22@gmail.com",
+                                  recipients=[email])
+                    msg.body = "Greetings " + user + "!"
+                    msg.html = render_template('forgot_password.html', user=user, password=found_user.password)
+                    mail.send(msg)
                     return render_template("found.html")
                 else:
                     flash(f"Wrong phone number!")
@@ -163,6 +205,7 @@ def logout():
 @app.route("/")
 @app.route("/home")
 def home():
+    orders.clear()
     return render_template('index.html')
 
 
@@ -212,6 +255,8 @@ def source():
         flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('source.html')
+
+
 
 
 if __name__ == "__main__":
