@@ -10,14 +10,14 @@ app.permanent_session_lifetime = timedelta(days=7)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lists.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.update(
-	DEBUG=True,
-	#EMAIL SETTINGS
-	MAIL_SERVER='smtp.gmail.com',
-	MAIL_PORT=465,
-	MAIL_USE_SSL=True,
-	MAIL_USERNAME = 'eol.nuha22@gmail.com',
-	MAIL_PASSWORD = 'haxherja'
-	)
+    DEBUG=True,
+    # EMAIL SETTINGS
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=465,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME='eol.nuha22@gmail.com',
+    MAIL_PASSWORD='haxherja'
+)
 mail = Mail(app)
 db = SQLAlchemy(app)
 
@@ -41,12 +41,15 @@ class Order:
         self.id = id
         self.category = category
         self.product = product
-        self.quantity=quantity
+        self.quantity = quantity
         self.price = price
 
 
-orders =[]
+orders = []
 prices = [0]
+if len(orders) == 0:
+    prices.clear()
+
 @app.route("/order", methods=["POST", "GET"])
 def order():
     if not "user" in session:
@@ -55,40 +58,57 @@ def order():
 
     else:
         if request.method == "POST":
-            category = request.form["category"]
-            product = request.form["product"]
-            quantity = request.form["quantity"]
-            if product == "Qipsa":
-                price = int(quantity)*1
-            elif product == "Smoka":
-                price = int(quantity)*0.5
-            elif product == "Torte":
-                price = int(quantity)*1.1
-            elif product == "Perime":
-                price = int(quantity)*0.7
-            elif product == "Coca-Cola":
-                price = int(quantity)*1.3
-            elif product == "Fanta":
-                price = int(quantity)*1.4
-            elif product == "Pepsi":
-                price = int(quantity)*1.4
-            elif product == "Sprite":
-                price = int(quantity)*1.4
-            elif product == "Ice-Tea":
-                price = int(quantity)*1
-            elif product == "Paloma-Banjo":
-                price = int(quantity)*1.2
-            elif product == "Domestos":
-                price = int(quantity)*2
-            elif product == "Sapun i Lengshem":
-                price = int(quantity)*1.8
-            else:
-                price = int(quantity)*2.2
-            orders.append(
-                Order(id=len(orders) + 1, category=category, product=product, quantity=int(quantity), price=("%.2f" % round(price, 2))))
-            prices.append(price)
+            for item in orders:
+                if "remove" + str(item.id) in request.form:
+                    if item.id > len(orders):
+                        orders.pop(len(orders) - 1)
+                        prices.pop(len(prices) - 1)
+                    else:
+                        orders.pop(item.id - 1)
+                        prices.pop(item.id - 1)
+
+            if 'submit1' in request.form:
+                if not len(orders) == 0:
+                    orders.clear()
+                    prices.clear()
+                    return redirect(url_for("order"))
 
 
+
+            elif 'submit' in request.form:
+                category = request.form["category"]
+                product = request.form["product"]
+                quantity = request.form["quantity"]
+                if product == "Qipsa":
+                    price = int(quantity) * 1
+                elif product == "Smoka":
+                    price = int(quantity) * 0.5
+                elif product == "Torte":
+                    price = int(quantity) * 1.1
+                elif product == "Perime":
+                    price = int(quantity) * 0.7
+                elif product == "Coca-Cola":
+                    price = int(quantity) * 1.4
+                elif product == "Fanta":
+                    price = int(quantity) * 1.4
+                elif product == "Pepsi":
+                    price = int(quantity) * 1.4
+                elif product == "Sprite":
+                    price = int(quantity) * 1.4
+                elif product == "Ice-Tea":
+                    price = int(quantity) * 1
+                elif product == "Paloma-Banjo":
+                    price = int(quantity) * 1.2
+                elif product == "Domestos":
+                    price = int(quantity) * 2
+                elif product == "Sapun i Lengshem":
+                    price = int(quantity) * 1.8
+                else:
+                    price = int(quantity) * 2.2
+                orders.append(
+                    Order(id=len(orders) + 1, category=category, product=product, quantity=int(quantity),
+                          price=("%.2f" % round(price, 2))))
+                prices.append(price)
 
         if request.method == "GET":
             client = session["user"]
@@ -101,12 +121,14 @@ def order():
                               sender=email,
                               recipients=["eol.nuha22@gmail.com"])
                 msg.body = "Greetings"
-                msg.html = render_template('client.html', client=client, orders=orders, total=("%.2f" % round(sum(prices), 2)))
+                msg.html = render_template('client.html', client=client, orders=orders,
+                                           total=("%.2f" % round(sum(prices), 2)))
                 mail.send(msg)
                 orders.clear()
                 prices.clear()
                 return render_template("order.html")
         return render_template("order.html", orders=orders, prices=prices, total=("%.2f" % round(sum(prices), 2)))
+
 
 @app.route("/view")
 def view():
@@ -160,7 +182,7 @@ def signup():
         msg = Message("Pygames with Eol!",
                       sender="eol.nuha22@gmail.com",
                       recipients=[email])
-        msg.body = "Greetings "+user+"!""\nYour sign up has been successful!\nWelcome to PYGAMES WITH EOL."
+        msg.body = "Greetings " + user + "!""\nYour sign up has been successful!\nWelcome to PYGAMES WITH EOL."
         mail.send(msg)
         return redirect(url_for("home"))
     else:
@@ -291,8 +313,6 @@ def source():
         flash(f"Please log in!")
         return redirect(url_for('login'))
     return render_template('source.html')
-
-
 
 
 if __name__ == "__main__":

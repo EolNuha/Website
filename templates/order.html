@@ -39,6 +39,11 @@
 
 
 
+
+
+
+
+
 </style>
 <script>
     function random()
@@ -82,6 +87,11 @@
 
 
 
+
+
+
+
+
 </script>
 <body style="background-color: #17202A; color: white;">
 <div style="padding-bottom: 50px;">
@@ -92,7 +102,7 @@
         <form method="post" style="padding-top: 20px;">
             <p style="margin-bottom: 0px;">
                 <select class="container-fluid" id="country" name="category" onchange="random()"
-                        style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;" required>
+                        style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;">
                     <option value="Select country">Select category</option>
                     <option value="Ushqime">Ushqime</option>
                     <option value="Pije">Pije</option>
@@ -100,7 +110,8 @@
                 </select>
             </p>
             <div id="output">
-                <select style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;" required>
+                <select class="container-fluid"
+                        style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;" required>
                     <option></option>
                 </select>
 
@@ -110,48 +121,66 @@
                                                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"
                                                   required>
             </p>
-            <p><a href=# id=process_input>
-                <button class='btn btn-default' style="margin-bottom: 50px; color:#007bff;">Add item</button>
-            </a></p>
+
+            <p><input type="submit" name="submit" style="color: #007bff;  width: 80px; height: 36px;" value="Add Item">
+            </p>
+
+
+        </form>
+        {% for item in orders %}
+        <div style="margin-top: 5px; text-align: center;">
+            <div style="margin-bottom: 5px;">
+                
+
+                <div class="btn-group" style="text-align: center; margin-top: 0px;">
+                    <button type="button" class="btn btn-primary btn-lg">Category: {{item.category}}
+                    </button>
+
+                </div>
+                <div class="btn-group" style="text-align: center; margin-top: 0px;">
+                    <button type="button" class="btn btn-primary btn-lg">Product: {{item.product}}
+                    </button>
+
+                </div>
+                <div class="btn-group" style="text-align: center; margin-top: 0px;">
+                    <button type="button" class="btn btn-primary btn-lg">Quantity: {{item.quantity}}
+                    </button>
+
+                </div>
+                <div class="btn-group" style="text-align: center; margin-top: 0px;">
+                    <button type="button" class="btn btn-primary btn-lg">
+                        Price : {{item.price}} euro
+                    </button>
+
+                </div>
+                <div class="btn-group" style="text-align: center; margin-top: 0px;">
+                    <form method="post">
+
+                        <input type="submit" name="remove{{item.id}}"
+                               style="color: #007bff; width: 25px; height: 25px;"
+                               value="X">
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div style="text-align: center; margin: 15px 0px 15px">
+            <button class="btn btn-primary btn-lg" style="background-color: #2573C6;">
+                Total : {{total}} euro
+            </button>
+
+        </div>
+        <form method="post" style="padding-top: 20px;">
+            <p style="margin-top: 50px;">Click the button below to clear your order!</p>
+            <p><input type="submit" name="submit1"
+                      style="color: #007bff; width: 100px; height: 36px; margin-bottom: 20px;"
+                      value="Clear order"></p>
         </form>
     </div>
 
-    {% for item in orders %}
-    <div style="margin-top: 5px; text-align: center;">
-        <div style="margin-bottom: 5px;">
 
-            <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                <button type="button" class="btn btn-primary btn-lg">Category: {{item.category}}
-                </button>
-
-            </div>
-            <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                <button type="button" class="btn btn-primary btn-lg">Product: {{item.product}}
-                </button>
-
-            </div>
-            <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                <button type="button" class="btn btn-primary btn-lg">Quantity: {{item.quantity}}
-                </button>
-
-            </div>
-            <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                <button type="button" class="btn btn-primary btn-lg">
-                    Price : {{item.price}} euro
-                </button>
-
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-
-    <div style="text-align: center; margin: 15px 0px 15px">
-        <button class="btn btn-primary btn-lg" style="background-color: #2573C6;">
-            Total : {{total}} euro
-        </button>
-
-    </div>
     <div style="text-align: center;">
         <form method="get">
             <p>Got all you need? Click the button below to <strong>order now!</strong></p>
