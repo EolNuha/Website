@@ -37,41 +37,76 @@ class lists(db.Model):
 
 
 class Order:
-    def __init__(self, id, country, city, quantity):
+    def __init__(self, id, category, product, quantity, price):
         self.id = id
-        self.country = country
-        self.city = city
+        self.category = category
+        self.product = product
         self.quantity=quantity
+        self.price = price
+
 
 orders =[]
-
-
+prices = [0]
 @app.route("/order", methods=["POST", "GET"])
 def order():
     if not "user" in session:
         flash(f"Please log in!")
         return redirect(url_for('login'))
-    if request.method == "POST":
-        country = request.form["country"]
-        city = request.form["city"]
-        quantity = request.form["quantity"]
-        orders.append(Order(id=len(orders) + 1, country=country, city=city, quantity=quantity))
-    if request.method == "GET":
-        client = session["user"]
-        found_user = lists.query.filter_by(name=client).first()
-        email = found_user.email
-        if len(orders) == 0:
-            flash("sban")
-        else:
-            msg = Message("Pygames with Eol!",
-                          sender=email,
-                          recipients=["eol.nuha22@gmail.com"])
-            msg.body = "Greetings"
-            msg.html = render_template('client.html', client=client, orders=orders)
-            mail.send(msg)
-            orders.clear()
-            return render_template("order.html")
-    return render_template("order.html", orders=orders )
+
+    else:
+        if request.method == "POST":
+            category = request.form["category"]
+            product = request.form["product"]
+            quantity = request.form["quantity"]
+            if product == "Qipsa":
+                price = int(quantity)*1
+            elif product == "Smoka":
+                price = int(quantity)*0.5
+            elif product == "Torte":
+                price = int(quantity)*1.1
+            elif product == "Perime":
+                price = int(quantity)*0.7
+            elif product == "Coca-Cola":
+                price = int(quantity)*1.3
+            elif product == "Fanta":
+                price = int(quantity)*1.4
+            elif product == "Pepsi":
+                price = int(quantity)*1.4
+            elif product == "Sprite":
+                price = int(quantity)*1.4
+            elif product == "Ice-Tea":
+                price = int(quantity)*1
+            elif product == "Paloma-Banjo":
+                price = int(quantity)*1.2
+            elif product == "Domestos":
+                price = int(quantity)*2
+            elif product == "Sapun i Lengshem":
+                price = int(quantity)*1.8
+            else:
+                price = int(quantity)*2.2
+            orders.append(
+                Order(id=len(orders) + 1, category=category, product=product, quantity=int(quantity), price=("%.2f" % round(price, 2))))
+            prices.append(price)
+
+
+
+        if request.method == "GET":
+            client = session["user"]
+            found_user = lists.query.filter_by(name=client).first()
+            email = found_user.email
+            if len(orders) == 0:
+                flash("sban")
+            else:
+                msg = Message("Pygames with Eol!",
+                              sender=email,
+                              recipients=["eol.nuha22@gmail.com"])
+                msg.body = "Greetings"
+                msg.html = render_template('client.html', client=client, orders=orders, total=("%.2f" % round(sum(prices), 2)))
+                mail.send(msg)
+                orders.clear()
+                prices.clear()
+                return render_template("order.html")
+        return render_template("order.html", orders=orders, prices=prices, total=("%.2f" % round(sum(prices), 2)))
 
 @app.route("/view")
 def view():
@@ -206,6 +241,7 @@ def logout():
 @app.route("/home")
 def home():
     orders.clear()
+    prices.clear()
     return render_template('index.html')
 
 

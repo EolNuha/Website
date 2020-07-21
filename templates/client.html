@@ -1,7 +1,11 @@
 <h1>Order from {{client}}</h1>
 <div>
     {% for item in orders %}
-    <p class="container-fluid">Category: {{item.country}}, Product: {{item.city}}, Quantity: {{item.quantity}}</p>
-    {% endfor %}
+    <p class="container-fluid">Category: <strong>{{item.category}}</strong>, Product: <strong>{{item.product}}</strong>,
+        Quantity: <strong>{{item.quantity}}</strong>, Price: <strong>{{item.price}} euro</strong>
+
+        {% endfor %}
+    </p>
+    <h2 class="container-fluid">Total : <strong>{{total}} euro</strong></h2>
 </div>
 
