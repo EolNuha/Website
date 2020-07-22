@@ -60,12 +60,10 @@ def order():
         if request.method == "POST":
             for item in orders:
                 if "remove" + str(item.id) in request.form:
-                    if item.id > len(orders):
-                        orders.pop(len(orders) - 1)
-                        prices.pop(len(prices) - 1)
-                    else:
-                        orders.pop(item.id - 1)
-                        prices.pop(item.id - 1)
+                    remove = orders.index(item)
+                    orders.pop(remove)
+                    prices.pop(remove)
+
 
             if 'submit1' in request.form:
                 if not len(orders) == 0:
@@ -110,23 +108,22 @@ def order():
                           price=("%.2f" % round(price, 2))))
                 prices.append(price)
 
-        if request.method == "GET":
-            client = session["user"]
-            found_user = lists.query.filter_by(name=client).first()
-            email = found_user.email
-            if len(orders) == 0:
-                flash("sban")
-            else:
-                msg = Message("Pygames with Eol!",
-                              sender=email,
-                              recipients=["eol.nuha22@gmail.com"])
-                msg.body = "Greetings"
-                msg.html = render_template('client.html', client=client, orders=orders,
-                                           total=("%.2f" % round(sum(prices), 2)))
-                mail.send(msg)
-                orders.clear()
-                prices.clear()
-                return render_template("order.html")
+            elif 'order' in request.form:
+                client = session["user"]
+                found_user = lists.query.filter_by(name=client).first()
+                email = found_user.email
+                if len(orders) == 0:
+                    flash("sban")
+                else:
+                    msg = Message("Pygames with Eol!",
+                                  sender=email,
+                                  recipients=["eol.nuha22@gmail.com"])
+                    msg.body = "Greetings"
+                    msg.html = render_template('client.html', client=client, orders=orders,
+                                               total=("%.2f" % round(sum(prices), 2)))
+                    mail.send(msg)
+                    orders.clear()
+                    prices.clear()
         return render_template("order.html", orders=orders, prices=prices, total=("%.2f" % round(sum(prices), 2)))
 
 

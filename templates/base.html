@@ -74,7 +74,7 @@ html {
   display: none;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1320px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     top: 0;
@@ -151,6 +151,7 @@ html {
 
 
 
+
 </style>
 <body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -174,6 +175,7 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
 
 
 
@@ -201,7 +203,12 @@ function topFunction() {
     <a href="/snakegame" style="font-size: 20px;">Snake Game<img
             src="static/images/snake.ico" alt="Snake Game" height="27"
             style="margin-left: 5px;"></a>
-    <div class="topnav-right">
+    <div style="float: right;">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()" style="height: 58px;">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <div style="float: right;">
         {% if not "user" in session %}
         <a href="/login" style="font-size: 20px;">Log In</a>
         {% endif %}
@@ -209,9 +216,10 @@ function topFunction() {
         <a href="/logout" style="font-size: 20px;">Log Out</a>
         {% endif %}
     </div>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()" style="height: 58px;">
-        <i class="fa fa-bars"></i>
-    </a>
+    <div style="float: right;">
+        <a href="/order" style="font-size: 20px;">Order</a>
+    </div>
+
 </div>
 
 <script>
@@ -223,6 +231,7 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+
 
 
 
