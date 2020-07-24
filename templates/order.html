@@ -25,32 +25,12 @@
      opacity: 0.85;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
+
 <script>
     function random()
     {
-       var a=document.getElementById('country').value;
+       var a=document.getElementById('category').value;
        if(a==="Ushqime")
        {
             var array=["Qipsa", "Smoka", "Torte", "Perime"];
@@ -65,7 +45,7 @@
        }
        else
        {
-            var array=[];
+            var array=["Select product"];
        }
        var string="";
        for(i=0;i<array.length;i++)
@@ -76,26 +56,8 @@
        document.getElementById('output').innerHTML=string;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
+
 <body style="background-color: #17202A; color: white;">
 <div style="padding-bottom: 50px;">
     <a href="/home"><img src="static/images/favicon5.png" alt="Logo" height="50" style="padding: 10px 10px 0px"></a>
@@ -108,22 +70,23 @@
 
             <p style="margin-bottom: 0px;">
 
-                <select class="container-fluid" id="country" name="category" onchange="random()"
+                <select class="container-fluid" id="category" name="category" onchange="random()"
                         style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;">
-                    <option value="Select country">Select category</option>
+                    <option value="Select category">Select category</option>
                     <option value="Ushqime">Ushqime</option>
                     <option value="Pije">Pije</option>
                     <option value="Higjienë">Higjienë</option>
                 </select>
             </p>
             <div id="output">
-                <select class="container-fluid"
+                <select class="container-fluid" name="product"
                         style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color:#007bff;" required>
-                    <option></option>
+                    <option>Select product</option>
                 </select>
 
             </div>
-            <p style="margin-bottom: 0px;"><input class="container-fluid" type="number" id="number" name="quantity" pattern="[0-9]*"
+            <p style="margin-bottom: 0px;"><input class="container-fluid" type="number" id="number" name="quantity"
+                                                  pattern="[0-9]*" min="1"
                                                   placeholder="Enter the quantity of the product"
                                                   style="margin-bottom: 20px; width: 700px; height: 50px; border: none; color: #007bff;"
                                                   required>
@@ -135,50 +98,60 @@
 
 
         </form>
-        {% for item in orders %}
-        <div style="margin-top: 5px; text-align: center;">
+        <div class="container" style="margin-top: 5px; text-align: center;">
             <div style="margin-bottom: 5px;">
-                
 
 
-                <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color: #2573C6;">Category: {{item.category}}
-                    </button>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td><strong style="font-size: 30px;">Category</strong></td>
 
-                </div>
-                <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color: #2573C6;">Product: {{item.product}}
-                    </button>
+                        <td><strong style="font-size: 30px;">Product</strong></td>
 
-                </div>
-                <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color: #2573C6;">Quantity: {{item.quantity}}
-                    </button>
+                        <td><strong style="font-size: 30px;">Quantity</strong></td>
 
-                </div>
-                <div class="btn-group" style="text-align: center; margin-top: 0px;">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color: #2573C6;">
-                        Price : {{item.price}} euro
-                    </button>
+                        <td><strong style="font-size: 30px;">Price</strong></td>
+                    </tr>
+                    </thead>
 
-                </div>
-                <div class="btn-group" style="text-align: center;">
-                    <form method="post">
+                    <tbody>
+
+                    {% for item in orders %}
+
+                    <tr>
+                        <td><strong><i>{{item.category}}</i></strong></td>
+
+                        <td><strong><i>{{item.product}}</i></strong></td>
+
+                        <td><strong><i>{{item.quantity}}</i></strong></td>
+
+                        <td><strong><i>{{item.price}} €</i></strong></td>
+                        <td><form method="post">
 
                         <input class="eoli" type="submit" name="remove{{item.id}}"
-                               style="color: #007bff; width: 25px; height: 25px;"
+                               style="color: #007bff; border-radius: 4px; width: 25px; height: 25px; border: none;"
                                value="X">
 
 
                     </form>
-                </div>
+                        </td>
+                    </tr>
+
+
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
-        {% endfor %}
         <div>
             <div class="btn-group" style="text-align: center; margin: 15px 0px 15px">
                 <button class="btn btn-primary btn-lg" style="background-color: #2573C6;">
-                    Total : {{total}} euro
+                    Total : {{total}} €
                 </button>
 
             </div>
@@ -197,10 +170,18 @@
         <form method="post">
             <p>Got all you need? Click the button below to <strong>order now!</strong></p>
             <p><strong><input class="eoli" type="submit" name="order"
-                      style="color: #007bff; width: 100px; height: 36px; margin-bottom: 20px;"
-                      value="Order"></strong></p>
+                              style="color: #007bff; width: 100px; height: 36px; margin-bottom: 20px;"
+                              value="Order"></strong></p>
         </form>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for msg in messages %}
+    <p style="color: red; opacity: 0.7; text-align: center;">{{msg}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
 </div>
 </body>

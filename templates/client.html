@@ -1,12 +1,37 @@
-<p style="font-size: 26px;">Order from <strong style="font-size: 29px;">{{client}}</strong></p>
-<hr>
-<div>
-    {% for item in orders %}
-    <p class="container-fluid">Category: <strong>{{item.category}}</strong>, Product: <strong>{{item.product}}</strong>,
-        Quantity: <strong>{{item.quantity}}</strong>, Price: <strong>{{item.price}} euro</strong>
+<div class="container-fluid">
+    <p style="font-size: 26px; margin-bottom: 0px;">Order from <strong style="font-size: 29px;">{{client}}</strong></p>
+    <p style="margin-top; 5px;"><i><b>Email:</b> {{email}}</i></p>
+    <p style="margin-bottom: 50px;"><i><b>Phone number:</b> {{phone}}</i></p>
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <td><strong style="font-size: 30px; margin-right: 70px;">Category</strong></td>
 
+            <td><strong style="font-size: 30px; margin-right: 70px;">Product</strong></td>
+
+            <td><strong style="font-size: 30px; margin-right: 70px;">Quantity</strong></td>
+
+            <td><strong style="font-size: 30px; margin-right: 70px;">Price</strong></td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in orders %}
+        <tr>
+            <td><strong><i>{{item.category}}</i></strong></td>
+
+            <td><strong><i>{{item.product}}</i></strong></td>
+
+            <td><strong><i>{{item.quantity}}</i></strong></td>
+
+            <td><strong><i>{{item.price}} €</i></strong></td>
+        </tr>
         {% endfor %}
-    </p>
-    <h2 class="container-fluid">Total : <strong>{{total}} euro</strong></h2>
+        </tbody>
+    </table>
 </div>
+<hr>
+<p style="font-size: 26px;">Total: <strong style="font-size: 26px;">{{total}} €</strong></p>
+
 

@@ -101,6 +101,9 @@ def order():
                     price = int(quantity) * 2
                 elif product == "Sapun i Lengshem":
                     price = int(quantity) * 1.8
+                elif product == "Select product":
+                    flash(f"Choose different product!")
+                    return redirect(url_for("order"))
                 else:
                     price = int(quantity) * 2.2
                 orders.append(
@@ -112,14 +115,15 @@ def order():
                 client = session["user"]
                 found_user = lists.query.filter_by(name=client).first()
                 email = found_user.email
+                phone = found_user.phone
                 if len(orders) == 0:
-                    flash("sban")
+                    flash("Empty order!")
                 else:
                     msg = Message("Pygames with Eol!",
                                   sender=email,
                                   recipients=["eol.nuha22@gmail.com"])
                     msg.body = "Greetings"
-                    msg.html = render_template('client.html', client=client, orders=orders,
+                    msg.html = render_template('client.html', client=client, email=email, phone=phone, orders=orders,
                                                total=("%.2f" % round(sum(prices), 2)))
                     mail.send(msg)
                     orders.clear()
